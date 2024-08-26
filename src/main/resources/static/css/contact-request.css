@@ -1,0 +1,27 @@
+body {
+    background-image: url('/img/c4.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.card {
+    background-color: transparent;
+    color: #050505;
+    font-size: 18px;
+    font-weight: bolder;
+    border: 2px solid gr;
+}
+
+.form-control {
+    background-color: lightblue;
+}
+.form-control:focus{
+    background-color: lightblue
+    !important;
+}
+.card-title {
+    font-weight: bolder;
+    font-size: 24px;
+}

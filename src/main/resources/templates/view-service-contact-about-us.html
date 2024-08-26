@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>View Service, Contact & About Us Details</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Service, Contact & About Us Details</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Details</h4>
+                </div>
+                <div class="card-body">
+                    <div th:if="${details != null}">
+                        <p><strong>Service:</strong> <span th:text="${details.service}"></span></p>
+                        <p><strong>About Us:</strong> <span th:text="${details.about}"></span></p>
+                        <p><strong>Phone Number:</strong> <span th:text="${details.phoneNumber}"></span></p>
+                        <p><strong>Email:</strong> <span th:text="${details.email}"></span></p>
+                        <p><strong>LinkedIn:</strong> <span th:text="${details.linkedin}"></span></p>
+                        <p><strong>Facebook:</strong> <span th:text="${details.faceBook}"></span></p>
+                    </div>
+                    <div th:if="${details == null}">
+                        <p>No details available.</p>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <a th:href="@{/admin/service-contact-about-us/edit{id} (id=${details.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/admin/details/delete}" class="btn btn-danger" th:onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

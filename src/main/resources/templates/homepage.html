@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+
+    <style>
+        body {
+            color: #fff;
+            background-image: url('/img/homepage-background.webp');
+            background-position: center;
+            background-size: cover;
+        }
+
+        .features-section {
+            padding: 50px 0;
+        }
+
+        .card-custom {
+            margin-bottom: 20px;
+            background: #ffffff;
+            color: #343a40;
+            border: 1px solid #ddd;
+            border-radius: 0.40rem;
+        }
+
+        .card-custom .card-body {
+            padding: 20px;
+        }
+
+        .card-custom img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .card-custom h3 {
+            margin-top: 0;
+        }
+
+        #owner {
+            background-image: url('/img/construction-background.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+
+        .owner-section {
+            background: #f8f9fa;
+            color: #343a40;
+            padding: 50px 0;
+            color: rgb(15, 15, 15);
+        }
+
+        .owner-card-parent {
+            display: flex;
+            justify-content: center;
+        }
+
+        .owner-card {
+            background: #16eed1;
+            max-width: 400px;
+            border-radius: 8px;
+            border: 1px solid rgb(15, 15, 15);
+            padding: 5px 50px;
+        }
+
+        .owner-section img {
+            border-radius: 50%;
+            max-width: 300px;
+            height: 300px;
+
+        }
+
+        .owner-info {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .owner-info h3 {
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+
+        .owner-info p {
+            font-size: 1.1rem;
+        }
+
+
+        .row-equal {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .col-equal {
+            flex: 1;
+            min-width: 30%;
+            max-width: 100%;
+        }
+
+        .res {
+            background-color: #f12a2a;
+        }
+
+        .com {
+            background-color: aqua;
+        }
+
+        .ren {
+            background-color: blueviolet;
+        }
+
+        .pro {
+            background-color: aquamarine;
+        }
+
+        .con {
+            background-color: chartreuse;
+        }
+
+        .card-custom {
+            transition: transform 3s ease;
+            transform: scale(1);
+
+        }
+
+        .card-custom.scrolled {
+            transform: scale(1.2);
+        }
+
+        .see-project {
+            font-size: larger;
+            font-weight: 500;
+             background-color: rgb(189, 189, 184);
+             padding: 6px 10px;
+
+        }
+        .see-project a{
+            color: rgb(245, 210, 12);
+        }
+        .see-project a:hover{
+            color: blue;
+        }
+
+        .see-project:hover {
+            color: #f10814;
+        }
+
+        .project {
+            color: #fff;
+            background:
+                linear-gradient(to bottom right,
+                    rgba(117, 248, 105, 0.8),
+                    rgba(255, 0, 0, 0.5) 50%,
+                    rgba(0, 0, 255, 0.8));
+            border-radius: 16px;
+            padding-bottom: 10px;
+            padding-top: 5px;
+        }
+
+        .project-text {
+            color: #fff;
+        }
+
+        .contact-card {
+            background:
+                linear-gradient(rgba(255, 0, 0, 0.8),
+                    rgba(145, 145, 148, 0.8));
+            border-radius: 4px;
+            padding-bottom: 5px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .contact-text {
+            color: #000;
+        }
+
+
+        .form-link {
+            color: #32f30b;
+            font-weight: bolder;
+        }
+
+        
+        @keyframes scaleProjectImage {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .project-item {
+            transition: transform 3s ease-in-out;
+        }
+    </style>
+    <title>Eazy Concept</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand g" href="#"><span class="lead">E</span><span class="trail">az</span><span
+                class="lead">C</span><span class="trail">oncept</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/home}"><i class='bx bx-home'></i> Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about"><i class='bx bx-user'></i> About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services"><i class='bx bx-cog'></i> Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/projects}"><i class='bx bx-folder'></i> Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact-us}" href=><i class='bx bx-envelope'></i> Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-6 slide-image">
+                <div class="image-container" id="image-container-1">
+                    <img id="image1" alt="Project Image 1">
+                </div>
+            </div>
+
+            <div class="col-md-6 slide-image">
+                <div class="image-container" id="image-container-2">
+                    <img id="image2" alt="Project Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="features-section">
+        <div class="container">
+            <div class="text-center">
+                <h2>About Us</h2>
+            </div>
+            <p>
+                Welcome to EazyConcept! We are a dynamic and innovative construction company based in Lagos, Nigeria,
+                committed to transforming
+                visions into reality. With a blend of creativity, technical expertise, and a passion for excellence, we
+                have established
+                ourselves as a leader in the construction industry. Our team of experienced professionals works
+                tirelessly to deliver
+                high-quality projects that not only meet but exceed our clients' expectations. From residential to
+                commercial projects,
+                we prioritize safety, sustainability, and customer satisfaction in everything we do. At EazyConcept, we
+                believe in building
+                more than just structures; we build lasting relationships and a brighter future for our community.
+            </p>
+        </div>
+    </section>
+
+    <section id="services" class="features-section">
+        <div class="container">
+            <div class="text-center">
+                <h2>Our Services</h2>
+            </div>
+            <div class="row row-equal">
+                <div class="col-md-6 col-equal">
+                    <div class="card card-custom res">
+                        <div class="card-body">
+                            <h3>Residential Construction</h3>
+                            <p>From custom homes to multi-family units, we specialize in creating living spaces that
+                                combine comfort, style, and functionality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-equal">
+                    <div class="card card-custom com">
+                        <div class="card-body">
+                            <h3>Commercial Construction</h3>
+                            <p>We deliver high-quality commercial projects that are tailored to meet the specific needs
+                                of businesses, ensuring they stand out in a competitive market.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-equal">
+                    <div class="card card-custom ren">
+                        <div class="card-body">
+                            <h3>Renovations and Remodeling</h3>
+                            <p>Transform your existing spaces with our renovation and remodeling services, where we
+                                blend modern design with your unique preferences to breathe new life into your property.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-equal">
+                    <div class="card card-custom pro">
+                        <div class="card-body">
+                            <h3>Project Management</h3>
+                            <p>Our experienced project managers oversee every phase of the construction process,
+                                ensuring projects are completed on time, within budget, and to the highest standards of
+                                quality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-equal">
+                    <div class="card card-custom con">
+                        <div class="card-body ">
+                            <h3>Consultancy Services</h3>
+                            <p>We provide expert advice and consultancy services to guide you through the complexities
+                                of planning, design, and construction, ensuring your project is a success from start to
+                                finish.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="features-section">
+        <div class="container project">
+            <div class="text-center">
+                <h2>Our Projects</h2>
+            </div>
+            <p class="project-text">
+                Explore our diverse portfolio, showcasing our expertise across various domains. From residential
+                construction to commercial developments, we deliver on-time delivery and cost-effective solutions that
+                meet and exceed client expectations.
+            </p>
+            <div class="project-gallery" style="display: flex; justify-content: space-between; gap: 20px;">
+                <div class="project-item" style="flex: 1; text-align: center;">
+                    <img src="/img/residential.jpg" alt="Modern Residential Home" class="project-image"
+                        style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+                    <p class="project-label">Modern Residential Home</p>
+                </div>
+                <div class="project-item" style="flex: 1; text-align: center;">
+                    <img src="/img/commercial.jpg" alt="Commercial Building Complex" class="project-image"
+                        style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+                    <p class="project-label">Commercial Building Complex</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <span class="see-project"><a  href="/projects">See All Projects</a></span>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="features-section">
+        <div class="container contact-card">
+            <div class="text-center">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-text">
+                At EazyConcept, we are dedicated to turning your vision into reality. Whether
+                you're looking to build your dream home or renovate an existing space, our experienced team is here to
+                guide you every step of the way.
+
+                To make it easy for you to get started, we offer several ways to connect with us. You can reach out
+                directly via phone or email, visit our office for a face-to-face consultation, or simply fill out our
+                online request form by clicking on this link: <a class="form-link"  th:href="@{/contact-us}">Send
+                    Request</a>. Just provide a few details about your project, and our team will promptly follow up
+                to discuss your needs and provide a tailored cost estimate.
+
+                We look forward to working with you on your next project. Contact us today to get started!
+                <div class="contact-details mt-5">
+                    <div>
+                        <div><i class='bx bx-envelope c email'></i>
+                            <span class="contact" th:text="'Email: ' + ${details.email}"></span>
+                        </div>
+
+
+                        <div>
+                            <i class='bx bx-phone c phone'></i>
+                            <span class="contact" th:text="'Phone: ' + ${details.phoneNumber}"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i class='bx bxl-facebook c facebook'></i>
+                            <span class="contact facebook" th:text="'Facebook: ' + ${details.faceBook}"></span>
+                        </div>
+
+
+                        <div>
+                            <i class='bx bxl-linkedin c link'></i>
+                            <span class="contact" th:text="'LinkedIn: ' + ${details.linkedin}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="owner" class="owner-section">
+        <div class="container owner-card-parent">
+            <div class="text-center owner-card">
+                <h2>Meet Our Founder</h2>
+                <div class="owner-info">
+                    <img id="owner1" src="/img/israel.jpg" alt="Owner Image">
+                    <h3>Nwafor Isreal</h3>
+                    <p>Founder & CEO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var images = /*[[${images}]]*/[];
+
+        function getRandomIndices(arrayLength, numIndices) {
+            const indices = [];
+            while (indices.length < numIndices) {
+                randomIndex = Math.floor(Math.random() * arrayLength);
+                if (!indices.includes(randomIndex)) {
+                    indices.push(randomIndex);
+                }
+            }
+            return indices;
+        }
+
+        function updateImages() {
+            const imageElements = [document.getElementById('image1'),
+            document.getElementById('image2')];
+            const randomIndices = getRandomIndices(images.length, imageElements.length);
+            for (let i = 0; i < imageElements.length; ++i) {
+                const randomImage = images[randomIndices[i]];
+                void imageElements[i].offsetWidth;
+                imageElements[i].classList.add('slide-in-out');
+                imageElements[i].src = 'data:' + randomImage.type + ';base64,' + randomImage.data;
+            }
+        }
+
+        const serviceCards = document.querySelectorAll('.card-custom');
+
+        function checkScroll() {
+            serviceCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    card.classList.add('scrolled');
+                    setTimeout(() => {
+                        card.classList.remove('scrolled');
+                    }, 1000); 
+                }
+            });
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const projectImages = document.querySelectorAll('.project-item');
+
+            function handleScroll() {
+                projectImages.forEach(image => {
+                    const rect = image.getBoundingClientRect();
+                    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                        image.style.animation = 'scaleProjectImage 3s ease-in-out';
+                    } else {
+                        image.style.animation = 'none'; 
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial check
+        });
+
+
+        window.addEventListener('scroll', checkScroll);
+
+        window.onload = function () {
+            updateImages();
+            setInterval(updateImages, 8000);
+        };
+        /*]]>*/
+    </script>
+</body>
+
+</html>

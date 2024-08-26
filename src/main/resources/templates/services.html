@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
+
+    <style>
+        /* Your existing styles */
+
+        /* Additional styles for content and responsiveness */
+        .project-gallery {
+          display: flex;
+          justify-content: space-around;
+        }
+
+        .project-image {
+          max-width: 300px;
+          height: auto;
+          margin-bottom: 20px;
+        }
+    </style>
+
+    <title>Eazy Concept</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+</nav>
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-md-6 slide-image">
+            <div class="image-container" id="image-container-1">
+                <img id="image1" alt="Project Image 1">
+            </div>
+        </div>
+
+        <div class="col-md-6 slide-image">
+            <div class="image-container" id="image-container-2">
+                <img id="image2" alt="Project Image 2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="about" class="features-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>
+            **EazyConcept: Your Vision, Our Reality**<br>
+            We are a leading construction company in Lagos, Nigeria, specializing in [list of core services]. With a proven track record of delivering [number] successful projects, we are committed to [core values, e.g., quality, innovation, customer satisfaction].
+        </p>
+    </div>
+</section>
+
+<section id="services" class="features-section">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="row row-equal">
+            <div class="col-md-6 col-equal">
+                <div class="card card-custom res">
+                    <div class="card-body">
+                        <h3>Residential Construction</h3>
+                        <p>
+                            We create stunning and functional homes tailored to your lifestyle. Our expertise includes [list of residential services, e.g., custom homes, renovations, interior design].
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="features-section">
+    <div class="container project">
+        <h2>Our Projects</h2>
+        <p class="project-text">
+            Discover our portfolio of exceptional projects that showcase our capabilities. From [project type] to [project type], we deliver [key benefits, e.g., on-time delivery, cost-effective solutions].
+        </p>
+        <div class="project-gallery">
+            <img src="/img/project1.jpg" alt="Project 1: Modern Residential Home" class="project-image">
+            <img src="/img/project2.jpg" alt="Project 2: Commercial Building Complex" class="project-image">
+        </div>
+        <a class="see-project" href="/projects">See All Projects</a>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

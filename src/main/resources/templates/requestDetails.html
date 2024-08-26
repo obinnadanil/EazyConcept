@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(21, 21, 24);
+            color: white;
+        }
+
+        .line {
+            margin-top: 0%;
+            border: 1px solid white;
+            margin-bottom: 5px;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+
+    <div th:fragment="details">
+
+
+
+        <div ><span th:text="${'Name: ' +requestDetails.firstName}"></span><span th:text="${ ' ' + requestDetails.lastName}"></span></div>
+        <div th:text="${'Email: ' +requestDetails.requestEmail}"></div>
+        <div th:text="${'Phone: ' +requestDetails.phoneNumber}"></div>
+
+        <div
+            th:text="${'Time Sent: ' +#dates.format(requestDetails.requestTime, 'yyyy-MM-dd HH:mm:ss')}">
+        </div>
+
+        <div class="text-center" th:text="${requestDetails.requestHeader}"
+            style="font-weight: bold; font-size: 1.5rem;"></div>
+        <div class="line"></div>
+
+        <div>
+            
+            <div class="request-body">
+                <p th:text="${requestDetails.request}" style="font-size: 1rem;  white-space: pre-wrap;"></p>
+            </div>
+        </div>
+
+
+        <div>
+
+            <p th:text="${'Time Sent: ' +#dates.format(requestDetails.requestTime, 'yyyy-MM-dd HH:mm:ss')}"></p>
+        </div>
+    </div>
+</body>
+
+</html>

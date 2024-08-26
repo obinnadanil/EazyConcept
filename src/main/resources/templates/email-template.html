@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(21, 21, 24);
+            color: white;
+        }
+
+        .line {
+            margin-top: 0%;
+            border: 1px solid white;
+            margin-bottom: 7px;
+        }
+
+        .request-body {
+            color: #f7f3f3;
+            padding-left: 2px;
+           
+        }
+    </style>
+</head>
+
+<body>
+
+    <div th:fragment="details">
+
+
+        <div th:text="${'Name: ' +requestDetails.firstName +' ' + requestDetails.lastName}"></div>
+        <div th:text="${'Email: ' +requestDetails.requestEmail}"></div>
+        <div th:text="${'Phone: ' +requestDetails.phoneNumber}"></div>
+
+
+
+        <div class="text-center" th:text="${requestDetails.requestHeader}" style="font-weight:bold; color:white; margin-top: 3px; font-size: 1.0rem;">
+        </div>
+        <div class="line"></div>
+
+        <div>
+
+            <div class="request-body">
+                <p th:text="${requestDetails.request}" style="font-size: 0.7rem;  white-space: pre-wrap;"></p>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

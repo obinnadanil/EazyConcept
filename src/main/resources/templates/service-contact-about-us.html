@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Details</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header text-center">
+      <h4 class="card-title"> Add Contact</h4>
+    </div>
+    <div class="card-body">
+      <form th:action="@{/admin/updateDetails}" th:object="${details}" method="post">
+
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" th:field="*{email}">
+        </div>
+
+        <div class="form-group">
+          <label for="linkedin">LinkedIn</label>
+          <input type="text" class="form-control" id="linkedin" name="linkedin" th:field="*{linkedin}">
+        </div>
+
+        <div class="form-group">
+          <label for="facebook">Facebook</label>
+          <input type="text" class="form-control" id="facebook" name="faceBook" th:field="*{faceBook}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Details</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

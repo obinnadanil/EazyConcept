@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Project</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .project-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .project-thumbnail {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .project-description {
+            margin-top: 20px;
+        }
+        body{
+            background-color: rgb(87, 84, 84);
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand g" href="@{/admin}"><span class="lead">E</span><span class="trail">az</span><span class="lead">C</span><span class="trail">oncept</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/home}"><i class='bx bx-home'></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about"><i class='bx bx-user'></i> About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#services"><i class='bx bx-cog'></i> Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/projects}"><i class='bx bx-folder'></i> Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact"><i class='bx bx-envelope'></i> Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-center my-4" th:text="${project.title}">Project Title</h1>
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <img th:src="'data:image/jpeg;base64,' + ${project.mainImage.base64Data}" class="project-image" alt="Main Project Image">
+        </div>
+        <div class="col-12 project-description text-center">
+            <p th:text="${project.description}">Project description goes here...</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-3 mb-1" th:each="image : ${project.images}">
+            <img th:src="'data:image/jpeg;base64,' + ${image.base64Data}" class="project-thumbnail" alt="Project Image">
+            <a th:href="@{/admin/projectImage/delete/{id} (id=${image.id})}" onclick="return confirm('are you sure you want to delete this picture?')" class="btn btn-danger btn-block">Delete image</a>
+        </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a th:href="@{/admin/projects}" class="btn btn-primary">Back to Projects</a>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
