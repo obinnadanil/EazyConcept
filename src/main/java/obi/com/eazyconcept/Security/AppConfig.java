@@ -30,11 +30,12 @@ public class AppConfig {
         httpSecurity.authorizeHttpRequests(
                 requestMatcherRegistry ->
                         requestMatcherRegistry.requestMatchers("/home", "/projects/**","/css/**","/img/**",
-                                        "/projects","/favicon.ico","/send-request","/contact-us","/admin/addAdmin","/images/**").permitAll()
-                                .requestMatchers("/admin/**","/login").hasAuthority("ROLE_ADMIN"))
+                                        "/projects","/favicon.ico","/send-request","/contact-us","/admin/addAdmin","/images/**","/login").permitAll()
+                                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN"))
                         .formLogin(httpSecurityFormLoginConfigurer ->
                                 httpSecurityFormLoginConfigurer.loginPage("/login")
-                                        .defaultSuccessUrl("/admin/adminPortal"))
+                                        .defaultSuccessUrl("/admin/adminPortal",true)
+                                        )
                 .exceptionHandling( httpSecurityExceptionHandlingConfigurer ->
                         httpSecurityExceptionHandlingConfigurer.accessDeniedHandler(accessDeniedHandler()))
                 .csrf(AbstractHttpConfigurer::disable);
