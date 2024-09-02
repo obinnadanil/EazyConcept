@@ -33,7 +33,7 @@ public class AppConfig {
                                         "/projects","/favicon.ico","/send-request","/contact-us","/admin/addAdmin","/images/**").permitAll()
                                 .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN"))
                         .formLogin(httpSecurityFormLoginConfigurer ->
-                                httpSecurityFormLoginConfigurer.loginPage("/login").permitAll()
+                                httpSecurityFormLoginConfigurer.loginPage("/login")
                                         .defaultSuccessUrl("/admin/adminPortal"))
                 .exceptionHandling( httpSecurityExceptionHandlingConfigurer ->
                         httpSecurityExceptionHandlingConfigurer.accessDeniedHandler(accessDeniedHandler()))
