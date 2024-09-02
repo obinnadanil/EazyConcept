@@ -40,7 +40,7 @@ public class ContactRequestController {
         service.saveRequest(newRequest);
 
         try {
-            emailService.sentHtmlEmail("obinnadanil@gmail.com",subject,newRequest);
+            emailService.sentHtmlEmail("demagister.eaz@gmail.com",subject,newRequest);
             return "request-success";
         }
         catch (MessagingException e){

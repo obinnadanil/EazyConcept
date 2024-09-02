@@ -21,7 +21,6 @@ public class ProjectImage {
     private String base64Data;
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
     private byte[] data;
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -9,11 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class AdminController {
- @Autowired
+    @Autowired
     AdminUserDetailService service;
 
  @Autowired
@@ -51,5 +54,22 @@ public class AdminController {
     public  String showAdminPortal(Model model){
         model.addAttribute("unreadCount", requestService.getUnreadRequestCount());
         return "AdminPortal";
+    }
+    @GetMapping("/accessDenied")
+    public String getAccessDeniedPage(){
+        return "accessDenied";
+    }
+
+    @GetMapping("/admin/profiles")
+    public String getProfile(Model  model){
+        List<Admin> adminList = service.getAdmins();
+        model.addAttribute("admins",adminList);
+        return "profiles";
+    }
+
+    @GetMapping("/admin/profiles/delete/{id}")
+    public String deleteAdmin(@PathVariable Long id){
+        service.deleteAdmin(service.getAdminById(id));
+        return "redirect:/profiles";
     }
 }

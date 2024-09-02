@@ -1,6 +1,7 @@
 package obi.com.eazyconcept.Controller;
 
 import obi.com.eazyconcept.Entity.Contact;
+import obi.com.eazyconcept.Exception.ElementNotFound;
 import obi.com.eazyconcept.Repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,18 +22,20 @@ public class ContactController {
     public  String showUpdateDetailsForm(Model model){
         Contact details = new Contact();
         model.addAttribute("details", details);
-        return "service-contact-about-us";
+        return "addContact";
     }
 
     @PostMapping("/admin/addDetails")
     public String updateDetails(@ModelAttribute("details") Contact details) {
+
         contactRepository.save(details);
         return "redirect:/admin/viewDetails";
     }
     @GetMapping("/admin/viewDetails")
     public  String viewDetails(Model model){
-        Contact contact = contactRepository.findAll().getFirst();
-        model.addAttribute("details", contact);
+        Optional<Contact> contact = Optional.ofNullable(contactRepository.findAll().stream().findFirst().orElseThrow(() -> new ElementNotFound("element not found")));
+
+        contact.ifPresent( value -> model.addAttribute("details",value));
         return "view-service-contact-about-us";
     }
     @GetMapping("/admin/details/delete/{id}")

@@ -12,17 +12,20 @@
             width: 100%;
             height: 400px;
             object-fit: cover;
+            border-radius: 8px;
         }
         .project-thumbnail {
             width: 100%;
             height: 300px;
             object-fit: cover;
+            border-radius: 4px;
         }
         .project-description {
             margin-top: 20px;
         }
         body{
             background-color: rgb(87, 84, 84);
+            color: #fff;
         }
 
     </style>
@@ -30,7 +33,7 @@
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand g" href="#"><span class="lead">E</span><span class="trail">az</span><span class="lead">C</span><span class="trail">oncept</span></a>
+    <a class="navbar-brand g" th:href="@{/home}"><span class="lead">E</span><span class="trail">az</span><span class="lead">C</span><span class="trail">oncept</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

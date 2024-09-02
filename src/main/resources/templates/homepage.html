@@ -5,214 +5,46 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/homepage.css}">
     <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
-
-
     <style>
         body {
-            color: #fff;
-            background-image: url('/img/homepage-background.webp');
-            background-position: center;
-            background-size: cover;
+            padding-top: 56px;
+            /* Adjust this value based on the height of your navbar */
         }
 
-        .features-section {
-            padding: 50px 0;
+        /* Keep the existing image styling */
+        .slide-image {
+            position: relative;
+            top: -30px;
+            /* Adjust this value to match the navbar height */
+            height: calc(100vh - 5px);
+            /* Adjust the height to fill the view height minus the navbar height */
         }
 
-        .card-custom {
-            margin-bottom: 20px;
-            background: #ffffff;
-            color: #343a40;
-            border: 1px solid #ddd;
-            border-radius: 0.40rem;
+        .image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0px 15px 0px 15px;
         }
 
-        .card-custom .card-body {
-            padding: 20px;
-        }
+        #image1 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
 
-        .card-custom img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .card-custom h3 {
-            margin-top: 0;
-        }
-
-        #owner {
-            background-image: url('/img/construction-background.jpg');
-            background-position: center;
-            background-size: cover;
-        }
-
-        .owner-section {
-            background: #f8f9fa;
-            color: #343a40;
-            padding: 50px 0;
-            color: rgb(15, 15, 15);
-        }
-
-        .owner-card-parent {
-            display: flex;
-            justify-content: center;
-        }
-
-        .owner-card {
-            background: #16eed1;
-            max-width: 400px;
-            border-radius: 8px;
-            border: 1px solid rgb(15, 15, 15);
-            padding: 5px 50px;
-        }
-
-        .owner-section img {
-            border-radius: 50%;
-            max-width: 300px;
-            height: 300px;
-
-        }
-
-        .owner-info {
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .owner-info h3 {
-            margin-top: 20px;
-            font-size: 1.5rem;
-        }
-
-        .owner-info p {
-            font-size: 1.1rem;
-        }
-
-
-        .row-equal {
-            display: flex;
-            flex-wrap: wrap;
-
-        }
-
-        .col-equal {
-            flex: 1;
-            min-width: 30%;
-            max-width: 100%;
-        }
-
-        .res {
-            background-color: #f12a2a;
-        }
-
-        .com {
-            background-color: aqua;
-        }
-
-        .ren {
-            background-color: blueviolet;
-        }
-
-        .pro {
-            background-color: aquamarine;
-        }
-
-        .con {
-            background-color: chartreuse;
-        }
-
-        .card-custom {
-            transition: transform 3s ease;
-            transform: scale(1);
-
-        }
-
-        .card-custom.scrolled {
-            transform: scale(1.2);
-        }
-
-        .see-project {
-            font-size: larger;
-            font-weight: 500;
-             background-color: rgb(189, 189, 184);
-             padding: 6px 10px;
-
-        }
-        .see-project a{
-            color: rgb(245, 210, 12);
-        }
-        .see-project a:hover{
-            color: blue;
-        }
-
-        .see-project:hover {
-            color: #f10814;
-        }
-
-        .project {
-            color: #fff;
-            background:
-                linear-gradient(to bottom right,
-                    rgba(117, 248, 105, 0.8),
-                    rgba(255, 0, 0, 0.5) 50%,
-                    rgba(0, 0, 255, 0.8));
-            border-radius: 16px;
-            padding-bottom: 10px;
-            padding-top: 5px;
-        }
-
-        .project-text {
-            color: #fff;
-        }
-
-        .contact-card {
-            background:
-                linear-gradient(rgba(255, 0, 0, 0.8),
-                    rgba(145, 145, 148, 0.8));
-            border-radius: 4px;
-            padding-bottom: 5px;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-
-        .contact-text {
-            color: #000;
-        }
-
-
-        .form-link {
-            color: #32f30b;
-            font-weight: bolder;
-        }
-
-        
-        @keyframes scaleProjectImage {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .project-item {
-            transition: transform 3s ease-in-out;
         }
     </style>
+
+
     <title>Eazy Concept</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <a class="navbar-brand g" href="#"><span class="lead">E</span><span class="trail">az</span><span
                 class="lead">C</span><span class="trail">oncept</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -243,17 +75,18 @@
 
     <div class="container-fluid">
         <div class="row mt-4">
-            <div class="col-md-6 slide-image">
+            <div class=" slide-image col-md-12">
                 <div class="image-container" id="image-container-1">
                     <img id="image1" alt="Project Image 1">
                 </div>
             </div>
-
-            <div class="col-md-6 slide-image">
+            <!-- <div class=" slide-image col-md-6">
                 <div class="image-container" id="image-container-2">
                     <img id="image2" alt="Project Image 1">
                 </div>
-            </div>
+            </div> -->
+
+
         </div>
     </div>
 
@@ -359,7 +192,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <span class="see-project"><a  href="/projects">See All Projects</a></span>
+                <span class="see-project"><a th:href="@{/projects}">See All Projects</a></span>
             </div>
         </div>
     </section>
@@ -377,7 +210,7 @@
 
                 To make it easy for you to get started, we offer several ways to connect with us. You can reach out
                 directly via phone or email, visit our office for a face-to-face consultation, or simply fill out our
-                online request form by clicking on this link: <a class="form-link"  th:href="@{/contact-us}">Send
+                online request form by clicking on this link: <a class="form-link" th:href="@{/contact-us}">Send
                     Request</a>. Just provide a few details about your project, and our team will promptly follow up
                 to discuss your needs and provide a tailored cost estimate.
 
@@ -442,13 +275,12 @@
         }
 
         function updateImages() {
-            const imageElements = [document.getElementById('image1'),
-            document.getElementById('image2')];
+            const imageElements = [document.getElementById('image1')];
             const randomIndices = getRandomIndices(images.length, imageElements.length);
             for (let i = 0; i < imageElements.length; ++i) {
                 const randomImage = images[randomIndices[i]];
                 void imageElements[i].offsetWidth;
-                imageElements[i].classList.add('slide-in-out');
+                imageElements[i].classList.add('fade-in-out');
                 imageElements[i].src = 'data:' + randomImage.type + ';base64,' + randomImage.data;
             }
         }
@@ -462,7 +294,7 @@
                     card.classList.add('scrolled');
                     setTimeout(() => {
                         card.classList.remove('scrolled');
-                    }, 1000); 
+                    }, 1000);
                 }
             });
 
@@ -477,7 +309,7 @@
                     if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
                         image.style.animation = 'scaleProjectImage 3s ease-in-out';
                     } else {
-                        image.style.animation = 'none'; 
+                        image.style.animation = 'none';
                     }
                 });
             }

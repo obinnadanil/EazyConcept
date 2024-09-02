@@ -3,7 +3,9 @@ package obi.com.eazyconcept.Controller;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import obi.com.eazyconcept.Entity.Contact;
 import obi.com.eazyconcept.Entity.HomePageProjectImage;
+import obi.com.eazyconcept.Exception.ElementNotFound;
 import obi.com.eazyconcept.Repository.ContactRepository;
 import obi.com.eazyconcept.Service.HomePageProjectImagesService;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -30,12 +33,18 @@ public class HomeController {
 
     @GetMapping("/home")
     public String showHomePage(Model model) {
-        List<ImageDto> images = service.getAllImages().stream().map(image -> {
-            String base64Data = Base64.encodeBase64String(image.getData());
-            return new ImageDto(image.getName(), image.getType(), base64Data);
-        }).collect(Collectors.toList());
+       List<ImageDto> images = service.getAllImages().stream().map(image -> {
+           String base64Data = Base64.encodeBase64String(image.getData());
+           return new ImageDto(image.getName(), image.getType(), base64Data);
+       }).collect(Collectors.toList());
+           //List<HomePageProjectImage> images = service.getAllImages();
+//        List<String> imageUrls = images.stream().map(image -> ("/images/"+image.getId())).toList();
+
+
         model.addAttribute("images", images);
-        model.addAttribute("details", contactRepository.findAll().getFirst());
+
+        Optional<Contact> contact = Optional.ofNullable(contactRepository.findAll().stream().findFirst().orElseThrow(() -> new ElementNotFound("element not found")));
+        contact.ifPresent(value -> model.addAttribute("details", value));
         return "homepage";
     }
 
@@ -55,13 +64,15 @@ public class HomeController {
         return "upload";
     }
 
+//    //List<String> imageUrls = images.stream().map(image -> ("/images/"+image.getId())).toList();
+//        for(HomePageProjectImage image : images){
+//        String base64 = Base64.encodeBase64String(image.getData());
+//        image.setBase64Data(base64);
+//    }
     @GetMapping("/admin/homePageImages")
     public String getHomePageImages(Model model) {
         List<HomePageProjectImage> images = service.getAllImages();
-        for (HomePageProjectImage image : images) {
-            String base64Data = Base64.encodeBase64String(image.getData());
-            image.setBase64Data(base64Data);
-        }
+
         model.addAttribute("images", images);
         return "homePageImages";
     }
@@ -86,7 +97,7 @@ public class HomeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.ok()
-                .contentType(MediaType.valueOf(image.getType()))
+                .contentType(MediaType.parseMediaType(image.getType()))
                 .body(image.getData());
     }
     @Data

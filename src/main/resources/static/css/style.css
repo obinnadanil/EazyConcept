@@ -3,22 +3,25 @@ i {
     font-size: 18px;
 }
 
-.image-container {
+/* .image-container {
     position: relative;
     overflow: hidden;
     padding-top: 75%;
     border-radius: 8px;
     border: 1px solid black;
-    height: 200px;
 
-}
+} */
 
 .navbar .nav-link {
     color: white !important;
 }
+.navbar{
+    margin-top: 3px;
+    background-color: transparent !important;
+    height: 20px !important;
+}
 
-
-.image-container img {
+/* .image-container img {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,7 +29,7 @@ i {
     height: 100%;
     object-fit: cover;
 
-}
+} */
 
 .lead {
     color: #6d19db;
@@ -94,4 +97,30 @@ i {
 
 .slide-in-out {
     animation: slideInOut 8s linear infinite;
+}
+
+@keyframes fadeInfadeOut {
+    0% {
+        opacity: 1;
+        /* Start with 0% opacity (completely invisible) */
+    }
+
+    20% {
+        opacity: 1;
+        /* Fade in to full opacity */
+    }
+
+    80% {
+        opacity: 0.7;
+        /* Stay at full opacity for 3 seconds */
+    }
+
+    100% {
+        opacity: 0;
+        /* Fade out to 0% opacity (completely invisible) */
+    }
+}
+
+.fade-in-out {
+    animation: fadeInfadeOut 8s linear infinite;
 }
