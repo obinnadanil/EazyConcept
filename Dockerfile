@@ -7,5 +7,5 @@ RUN mvn clean package
 # Use OpenJDK 21 for runtime
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY --from=build /app/target/obi-0.0.1-SNAPSHOT.jar .
+COPY --from=build /app/target/eazyconcept-0.0.1-SNAPSHOT.jar .
 CMD ["java", "-jar", "eazyconcept-0.0.1-SNAPSHOT.jar"]
