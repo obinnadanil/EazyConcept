@@ -31,7 +31,7 @@ public class AppConfig {
                 requestMatcherRegistry ->
                         requestMatcherRegistry.requestMatchers("/home", "/projects/**","/css/**","/img/**",
                                         "/projects","/favicon.ico","/send-request","/contact-us","/admin/addAdmin","/images/**").permitAll()
-                                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN"))
+                                .requestMatchers("/admin/**","/login").hasAuthority("ROLE_ADMIN"))
                         .formLogin(httpSecurityFormLoginConfigurer ->
                                 httpSecurityFormLoginConfigurer.loginPage("/login")
                                         .defaultSuccessUrl("/admin/adminPortal"))
